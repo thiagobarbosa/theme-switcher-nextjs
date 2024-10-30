@@ -81,6 +81,6 @@ if (command === 'add' && args[1] === 'theme-switcher') {
 } else {
   console.error(chalk.red('Unknown command.'))
   console.log(chalk.blue('Available commands:'))
-  console.log(chalk.gray('  npx geist-theme-switcher add theme-switcher'))
+  console.log(chalk.gray('  npx theme-switcher-nextjs add theme-switcher'))
   process.exit(1)
 }

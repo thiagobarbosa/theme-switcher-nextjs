@@ -1,6 +1,8 @@
-# Geist-Inspired Theme Switcher
+# Theme Switcher for Next.js
 
-A beautifully designed theme switcher component for Next.js applications based on the Vercel's Geist design system.
+A beautifully designed theme switcher component for Next.js applications.
+Smoothly switch between light, dark and system themes with a single click.
+Based on the Vercel's Geist design system.
 
 <p style="text-align: center;">
    <img src="src/assets/theme-switcher.gif" alt="Theme Switcher" width="364"/>
@@ -20,7 +22,7 @@ You can check a live demo on my [personal website](https://www.thiago.bio/).
 ## Installation
 
 ```bash
-npx geist-theme-switcher@latest add theme-switcher
+npx theme-switcher-nextjs@latest add theme-switcher
 ```
 
 This will:
@@ -62,7 +64,7 @@ export default function RootLayout({ children }) {
    theme switcher:
 
 ```tsx
-import { ThemeSwitcher } from 'geist-theme-switcher'
+import { ThemeSwitcher } from 'theme-switcher-nextjs'
 
 export default function Header() {
   return (
@@ -75,13 +77,13 @@ export default function Header() {
 
 ## Props
 
-| Prop           | Type                                   | Default                       | Description            |
-|----------------|----------------------------------------|-------------------------------|------------------------|
-| `defaultTheme` | `'light' \| 'dark' \| 'system'`        | `'system'`                    | Initial theme          |
-| `themes`       | `Array<'light' \| 'dark' \| 'system'>` | `['light', 'dark', 'system']` | Available themes       |
-| `size`         | `'sm' \| 'md' \| 'lg'`                 | `'sm'`                        | Component size         |
-| `className`    | `string`                               | `undefined`                   | Additional CSS classes |
-
+| Prop           | Type                                   | Default                       | Description                           |
+|----------------|----------------------------------------|-------------------------------|---------------------------------------|
+| `defaultTheme` | `'light' \| 'dark' \| 'system'`        | `'system'`                    | Initial theme                         |
+| `themes`       | `Array<'light' \| 'dark' \| 'system'>` | `['light', 'dark', 'system']` | Available themes                      |
+| `size`         | `'sm' \| 'md' \| 'lg'`                 | `'sm'`                        | Component size                        |
+| `className`    | `string`                               | `undefined`                   | Additional CSS classes                |
+| `includeSystem`| `boolean`                              | `true`                        | Whether to show the system theme option|
 ## Customization
 
 The component uses Tailwind CSS for styling and can be customized using the `className` prop:
@@ -101,10 +103,10 @@ If you prefer to set things up manually:
 1. Install the package and its peer dependencies:
 
 ```bash
-npm install geist-theme-switcher next-themes @phosphor-icons/react clsx tailwind-merge
+npm install theme-switcher-nextjs next-themes @phosphor-icons/react clsx tailwind-merge
 ```
 
-2. Copy the file `components/ThemeSwitcher.tsx` to your project.
+2. Copy the file `src/components/ThemeSwitcher.tsx` to your project.
 
 ## Contributing
 
