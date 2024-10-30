@@ -1,0 +1,10 @@
+src/
+tests/
+.idea/
+.github/
+.git/
+.gitignore
+.npmrc
+tsconfig.json
+*.test.*
+*.spec.*
