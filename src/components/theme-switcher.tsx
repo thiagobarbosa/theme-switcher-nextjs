@@ -13,13 +13,15 @@ interface ThemeSwitcherProps extends React.HTMLAttributes<HTMLDivElement> {
   defaultTheme?: Theme
   themes?: Theme[]
   size?: Size
+  includeSystem?: boolean
 }
 
 const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
                                                        className,
                                                        defaultTheme = 'system',
                                                        themes = ['light', 'dark', 'system'],
-                                                       size = 'md',
+                                                       size = 'sm',
+                                                       includeSystem = true,
                                                        ...props
                                                      }) => {
   const { theme, setTheme } = useTheme()
@@ -28,6 +30,18 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
   useEffect(() => {
     setMounted(true)
   }, [])
+  
+  // filter out system theme if includeSystem is false
+  const filteredThemes = includeSystem
+    ? themes
+    : themes.filter(t => t !== 'system')
+  
+  // adjust defaultTheme if system is not included
+  useEffect(() => {
+    if (!includeSystem && theme === 'system') {
+      setTheme('light')
+    }
+  }, [includeSystem, theme, setTheme])
   
   if (!mounted) {
     return null
@@ -53,7 +67,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
       )}
       {...props}
     >
-      {themes.map(t => (
+      {filteredThemes.map(t => (
         <button
           key={t}
           type="button"
