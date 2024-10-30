@@ -1,10 +1,10 @@
 # Theme Switcher for Next.js
 
-A beautifully designed theme switcher component for Next.js applications.
-Smoothly switch between light, dark and system themes with a single click.
+A beautifully designed theme switcher component for Next.js applications.\
+Smoothly switch between light, dark and system themes with a single click.\
 Based on the Vercel's Geist design system.
 
-![Theme Switcher for Next.js](/src/assets/theme-switcher.gif)
+![Theme Switcher for Next.js](https://github.com/thiagobarbosa/theme-switcher-nextjs/raw/58cded19840fc5a6c69fa5ba9da9e7662550f56d/src/assets/theme-switcher.gif)
 
 ## Live demo
 
@@ -82,6 +82,7 @@ export default function Header() {
 | `size`         | `'sm' \| 'md' \| 'lg'`                 | `'sm'`                        | Component size                        |
 | `className`    | `string`                               | `undefined`                   | Additional CSS classes                |
 | `includeSystem`| `boolean`                              | `true`                        | Whether to show the system theme option|
+
 ## Customization
 
 The component uses Tailwind CSS for styling and can be customized using the `className` prop:
@@ -93,18 +94,6 @@ The component uses Tailwind CSS for styling and can be customized using the `cla
   themes={['light', 'dark']} // remove system theme
 />
 ```
-
-## Manual Installation
-
-If you prefer to set things up manually:
-
-1. Install the package and its peer dependencies:
-
-```bash
-npm install theme-switcher-nextjs next-themes @phosphor-icons/react clsx tailwind-merge
-```
-
-2. Copy the file `src/components/ThemeSwitcher.tsx` to your project.
 
 ## Contributing
 
