@@ -2,7 +2,7 @@
   "name": "geist-theme-switcher",
   "version": "0.1.0",
   "type": "module",
-  "description": "A beautifully designed theme switcher component for Next.js applications based on the Vercel's Geist design system.",
+  "description": "A beautifully designed theme switcher component for Next.js apps based on the Vercel's Geist design system.",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
@@ -42,5 +42,22 @@
     "chalk": "^5.3.0",
     "fs-extra": "^11.2.0",
     "inquirer": "^12.0.1"
+  },
+  "keywords": [
+    "geist",
+    "theme",
+    "switcher",
+    "next.js",
+    "react",
+    "design",
+    "system",
+    "component"
+  ],
+  "author": "Thiago Barbosa",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thiagobarbosa/geist-theme-switcher",
+    "directory": "geist-theme-switcher"
   }
 }
