@@ -93,7 +93,7 @@ async function copyFiles(scriptDir: string, targetBaseDir: string): Promise<void
 export async function install(sourceDir: string, useSrc: boolean) {
   const targetBaseDir = useSrc ? join(process.cwd(), 'src') : process.cwd()
 
-  console.log(chalk.blue('🚀 Starting theme switcher installation 2...'))
+  console.log(chalk.blue('🚀 Starting theme switcher installation...'))
 
   try {
     await checkProjectStructure()
