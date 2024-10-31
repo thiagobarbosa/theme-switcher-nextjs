@@ -7,10 +7,10 @@ import chalk from 'chalk'
 const execAsync = promisify(exec)
 
 const REQUIRED_DEPENDENCIES = {
-  'next-themes': 'latest',
-  '@phosphor-icons/react': 'latest',
-  'clsx': 'latest',
-  'tailwind-merge': 'latest'
+  'next-themes': '^0.2.1',
+  '@phosphor-icons/react': '^2.0.0',
+  'clsx': '^2.0.0',
+  'tailwind-merge': '^2.0.0'
 } as const
 
 async function checkProjectStructure() {
@@ -18,7 +18,7 @@ async function checkProjectStructure() {
   await fs.access(join(process.cwd(), 'package.json')).catch(() => {
     throw new Error('Missing package.json file. Please ensure you are in the root directory of a Next.js project.')
   })
-  
+
   // check for either app/layout.tsx or src/app/layout.tsx
   await Promise.any([
     fs.access(join(process.cwd(), 'app/layout.tsx')),
@@ -26,7 +26,7 @@ async function checkProjectStructure() {
   ]).catch(() => {
     throw new Error('Missing layout.tsx file. Please ensure either app/layout.tsx or src/app/layout.tsx exists.')
   })
-  
+
   // check for either tailwind.config.ts or tailwind.config.js
   await Promise.any([
     fs.access(join(process.cwd(), 'tailwind.config.ts')),
@@ -38,10 +38,10 @@ async function checkProjectStructure() {
 
 async function installDependencies(): Promise<void> {
   console.log(chalk.blue('📦 Installing required dependencies...'))
-  
+
   const dependencies = Object.entries(REQUIRED_DEPENDENCIES)
     .map(([pkg, version]) => `${pkg}@${version}`)
-  
+
   try {
     await execAsync(`npm install ${dependencies.join(' ')}`)
     console.log(chalk.blue('✔ Dependencies installed successfully'))
@@ -64,16 +64,16 @@ async function ensureDirectoryExists(dir: string): Promise<void> {
 async function copyFiles(scriptDir: string, targetBaseDir: string): Promise<void> {
   const componentsDir = join(targetBaseDir, 'components')
   const libDir = join(targetBaseDir, 'lib')
-  
+
   // create directories if they don't exist
   await Promise.all([
     ensureDirectoryExists(componentsDir),
     ensureDirectoryExists(libDir)
   ])
-  
+
   // get source directories
   const sourceComponentsDir = join(scriptDir, 'components')
-  
+
   try {
     await Promise.all([
       fs.copyFile(
@@ -83,7 +83,7 @@ async function copyFiles(scriptDir: string, targetBaseDir: string): Promise<void
         throw new Error(`Failed to copy ThemeSwitcher.tsx: ${error.message}`)
       })
     ])
-    
+
   } catch (error) {
     console.error(chalk.red('Error copying files:'), error)
     throw error
@@ -92,14 +92,14 @@ async function copyFiles(scriptDir: string, targetBaseDir: string): Promise<void
 
 export async function install(sourceDir: string, useSrc: boolean) {
   const targetBaseDir = useSrc ? join(process.cwd(), 'src') : process.cwd()
-  
-  console.log(chalk.blue('🚀 Starting theme switcher installation...'))
-  
+
+  console.log(chalk.blue('🚀 Starting theme switcher installation 2...'))
+
   try {
     await checkProjectStructure()
     await installDependencies()
     await copyFiles(sourceDir, targetBaseDir)
-    
+
     console.log(chalk.green('✨ ThemeSwitcher installed successfully!'))
     console.log(chalk.gray(`Components installed in ${useSrc ? '/src' : 'root'} directory`))
     console.log(chalk.blue('Next steps:'))
