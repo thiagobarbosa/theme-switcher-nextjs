@@ -7,10 +7,9 @@ import chalk from 'chalk'
 const execAsync = promisify(exec)
 
 const REQUIRED_DEPENDENCIES = {
-  'next-themes': '^0.2.1',
-  '@phosphor-icons/react': '^2.0.0',
-  'clsx': '^2.0.0',
-  'tailwind-merge': '^2.0.0'
+  '@phosphor-icons/react': 'latest',
+  'clsx': 'latest',
+  'tailwind-merge': 'latest'
 } as const
 
 async function checkProjectStructure() {

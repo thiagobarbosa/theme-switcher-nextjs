@@ -1,6 +1,6 @@
 {
   "name": "theme-switcher-nextjs",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "type": "module",
   "sideEffects": false,
   "description": "A beautifully designed theme switcher component for Next.js apps based on the Vercel's Geist design system.",
