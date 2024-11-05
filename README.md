@@ -1,6 +1,6 @@
 # Theme Switcher for Next.js
 
-A beautifully designed theme switcher component for Next.js applications.\
+A minimalist, beautifully designed theme switcher component for Next.js applications.\
 Smoothly switch between light, dark and system themes with a single click.\
 Based on the Vercel's Geist design system.
 
