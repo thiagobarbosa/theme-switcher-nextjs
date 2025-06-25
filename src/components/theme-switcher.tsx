@@ -4,7 +4,7 @@ import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 import { GearSix, Moon, Sun } from '@phosphor-icons/react'
-import { cn } from '@/lib/utils'
+import { cn } from '../lib/utils'
 
 type Theme = 'light' | 'dark' | 'system'
 type Size = 'sm' | 'md' | 'lg'

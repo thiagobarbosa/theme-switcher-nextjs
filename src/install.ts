@@ -9,7 +9,8 @@ const execAsync = promisify(exec)
 const REQUIRED_DEPENDENCIES = {
   '@phosphor-icons/react': 'latest',
   'clsx': 'latest',
-  'tailwind-merge': 'latest'
+  'tailwind-merge': 'latest',
+  'next-themes': 'latest'
 } as const
 
 async function checkProjectStructure() {
@@ -72,6 +73,7 @@ async function copyFiles(scriptDir: string, targetBaseDir: string): Promise<void
 
   // get source directories
   const sourceComponentsDir = join(scriptDir, 'components')
+  const sourceLibDir = join(scriptDir, 'lib')
 
   try {
     await Promise.all([
@@ -80,6 +82,12 @@ async function copyFiles(scriptDir: string, targetBaseDir: string): Promise<void
         join(componentsDir, 'theme-switcher.tsx')
       ).catch(error => {
         throw new Error(`Failed to copy ThemeSwitcher.tsx: ${error.message}`)
+      }),
+      fs.copyFile(
+        join(sourceLibDir, 'utils.ts'),
+        join(libDir, 'utils.ts')
+      ).catch(error => {
+        throw new Error(`Failed to copy utils.ts: ${error.message}`)
       })
     ])
 
@@ -100,10 +108,13 @@ export async function install(sourceDir: string, useSrc: boolean) {
     await copyFiles(sourceDir, targetBaseDir)
 
     console.log(chalk.green('✨ ThemeSwitcher installed successfully!'))
-    console.log(chalk.gray(`Components installed in ${useSrc ? '/src' : 'root'} directory`))
+    console.log(chalk.gray(`Components and utilities installed in ${useSrc ? '/src' : 'root'} directory`))
+    console.log(chalk.blue('Files installed:'))
+    console.log(chalk.gray(`  - ${useSrc ? 'src/' : ''}components/theme-switcher.tsx`))
+    console.log(chalk.gray(`  - ${useSrc ? 'src/' : ''}lib/utils.ts`))
     console.log(chalk.blue('Next steps:'))
     console.log('1. Import the ThemeSwitcher component:')
-    console.log(chalk.gray('   import { ThemeSwitcher } from "@/components/ThemeSwitcher"'))
+    console.log(chalk.gray('   import { ThemeSwitcher } from "@/components/theme-switcher"'))
     console.log('2. Use it in your component:')
     console.log(chalk.gray('   <ThemeSwitcher />'))
   } catch (error) {
