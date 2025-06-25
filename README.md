@@ -20,27 +20,19 @@ You can check a live demo on my [personal website](https://www.thiago.bio/).
 ## Installation
 
 ```bash
-npx theme-switcher-nextjs@latest add theme-switcher
+npm install theme-switcher-nextjs next-themes
 ```
 
-This will:
-
-- Install all required dependencies
-- Add the ThemeSwitcher component to your project under folder `components/ThemeSwitcher.tsx`.
-
-
-> [!NOTE]
-> The installation script will automatically detect if you are `src` or `root` folder and place the component in the correct location.
-
+> **Note**: This library works with `next-themes` v0.1.0 and above (including the latest v0.4.x). If you already have `next-themes` installed, you don't need to install it again.
 
 ## Prerequisites
 
-- Next.js 13+ with App Router
+- Next.js 13+ with App Router  
 - Tailwind CSS
 
 ## Usage
 
-1. Make sure your `layout.tsx` file is wrapped with the `ThemeProvider` from `next-themes`, like in this example:
+1. Make sure your `layout.tsx` file is wrapped with the `ThemeProvider` from `next-themes`:
 
 ```tsx
 import { ThemeProvider } from 'next-themes'
@@ -58,8 +50,7 @@ export default function RootLayout({ children }) {
 }
 ```
 
-2. Import the `ThemeSwitcher` component in your header, footer or any other component where you want to display the
-   theme switcher:
+2. Import and use the `ThemeSwitcher` component:
 
 ```tsx
 import { ThemeSwitcher } from 'theme-switcher-nextjs'
@@ -67,7 +58,7 @@ import { ThemeSwitcher } from 'theme-switcher-nextjs'
 export default function Header() {
   return (
     <header>
-      <ThemeSwitcher/>
+      <ThemeSwitcher />
     </header>
   )
 }

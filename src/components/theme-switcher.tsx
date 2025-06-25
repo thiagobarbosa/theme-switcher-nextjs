@@ -1,9 +1,6 @@
-'use client'
-
-import * as React from 'react'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
-import { GearSix, Moon, Sun } from '@phosphor-icons/react'
+import { GearSixIcon, MoonIcon, SunIcon } from '@phosphor-icons/react'
 import { cn } from '../lib/utils'
 
 type Theme = 'light' | 'dark' | 'system'
@@ -51,11 +48,11 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
     const iconSize = size === 'sm' ? 16 : size === 'md' ? 24 : 32
     switch (t) {
       case 'light':
-        return <Sun size={iconSize} className="rounded-full"/>
+        return <SunIcon size={iconSize} className="rounded-full"/>
       case 'dark':
-        return <Moon size={iconSize} className="rounded-full"/>
+        return <MoonIcon size={iconSize} className="rounded-full"/>
       case 'system':
-        return <GearSix size={iconSize} className="rounded-full"/>
+        return <GearSixIcon size={iconSize} className="rounded-full"/>
     }
   }
   

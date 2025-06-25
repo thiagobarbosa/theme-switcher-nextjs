@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(npx create-next-app:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(rm:*)",
+      "Bash(ls:*)",
+      "Bash(timeout 10s npm run dev)",
+      "Bash(true)",
+      "Bash(npm i)",
+      "Bash(node:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(npm view:*)",
+      "Bash(npm update:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm version:*)"
+    ],
+    "deny": []
+  }
+}
