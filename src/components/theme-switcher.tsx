@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
-import { GearSixIcon, MoonIcon, SunIcon } from '@phosphor-icons/react'
+import { GearSixIcon, MoonIcon, SunIcon } from '../icons'
 import { cn } from '../lib/utils'
 
 type Theme = 'light' | 'dark' | 'system'
@@ -14,48 +14,48 @@ interface ThemeSwitcherProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
-                                                       className,
-                                                       defaultTheme = 'system',
-                                                       themes = ['light', 'dark', 'system'],
-                                                       size = 'sm',
-                                                       includeSystem = true,
-                                                       ...props
-                                                     }) => {
+  className,
+  defaultTheme = 'system',
+  themes = ['light', 'dark', 'system'],
+  size = 'sm',
+  includeSystem = true,
+  ...props
+}) => {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState<boolean>(false)
-  
+
   useEffect(() => {
     setMounted(true)
   }, [])
-  
+
   // filter out system theme if includeSystem is false
   const filteredThemes = includeSystem
     ? themes
     : themes.filter(t => t !== 'system')
-  
+
   // adjust defaultTheme if system is not included
   useEffect(() => {
     if (!includeSystem && theme === 'system') {
       setTheme('light')
     }
   }, [includeSystem, theme, setTheme])
-  
+
   if (!mounted) {
     return null
   }
-  
+
   const getIcon = (t: Theme): React.ReactNode => {
     const iconSize = size === 'sm' ? 16 : size === 'md' ? 24 : 32
     switch (t) {
       case 'light':
-        return <SunIcon size={iconSize} className="rounded-full"/>
+        return <SunIcon size={iconSize} className="rounded-full" />
       case 'dark':
-        return <MoonIcon size={iconSize} className="rounded-full"/>
+        return <MoonIcon size={iconSize} className="rounded-full" />
       case 'system':
-        return <GearSixIcon size={iconSize} className="rounded-full"/>
+        return <GearSixIcon size={iconSize} className="rounded-full" />
     }
   }
-  
+
   return (
     <div
       className={cn(
